@@ -1,23 +1,24 @@
 import React from 'react'
 
-export default function  () {
-  return (
-    <div> 
-         <div id="carouselExampleFade" className="carousel slide carousel-fade">
+export default function Carousel() {
+    return (
+        <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel">
             <div className="carousel-inner">
-                <div className="carousel-caption">
+                <div className="carousel-caption" style={{zIndex:"10"}}>
+
                     <form className="form-inline">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
+                </div>
                 <div className="carousel-item active">
-                    <img src="https://imgs.search.brave.com/Uzqz9i5RmvhOLDoi73YuY0Fg-N5tw_sMxfdzEa_WCVI/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1Lzg1LzI5LzEz/LzM2MF9GXzU4NTI5/MTMzOF8wSjhROHZZ/YktEQ3U4eXFxd0FP/OFBzUVo0RVNQMnpk/OC5qcGc" className="d-block w-100" alt="..." />
+                    <img src="https://wallpaperaccess.com/full/1306253.jpg" className="d-block w-100" style={{ filter: "brightness(30%)"}} alt="..." />
                 </div>
                 <div className="carousel-item">
-                    <img src="..." className="d-block w-100" alt="..." />
+                    <img src="https://cdn.britannica.com/08/177308-050-94D9D6BE/Food-Pizza-Basil-Tomato.jpg" className="d-block w-100" style={{ filter: "brightness(30%)"}}  alt="..." />
                 </div>
                 <div className="carousel-item">
-                    <img src="..." className="d-block w-100" alt="..." />
+                    <img src="https://th.bing.com/th/id/OIP.64vXNk6FRg6TzVCW7u2zLAHaFj?rs=1&pid=ImgDetMain" className="d-block w-100" style={{ filter: "brightness(30%)"}}  alt="..." />
                 </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -29,7 +30,5 @@ export default function  () {
                 <span className="visually-hidden">Next</span>
             </button>
         </div>
-    </div>
-    </div>
-  )
+    )
 }

@@ -18,7 +18,7 @@ export default function Navbar() {
           <Link className="nav-link active" to="/login">Login</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link active" to="/creatuser">Sign Up</Link>
+          <Link className="nav-link active" to="/createuser">Sign Up</Link>
         </li>
         
       </ul>
