@@ -8,14 +8,14 @@ export default function Signup() {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/api/creatuser", {
       method: "POST",
-      header: {
+      headers: {
         'content-Type': 'application/json'
       },
       body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, location: credentials.geolocation })
     });
     const json = await response.json()
     console.log(json);
-
+    
     if (!json.success) {
       alert("Enter Vaild Credentials")
     }
@@ -30,7 +30,7 @@ export default function Signup() {
     <div className='container'>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label for="name" className="form-label">name</label>
+          <label for="name" className="form-label">Name</label>
           <input type="text" className="form-control" name='name' value={credentials.name} onChange={onChange} />
         </div>
         <div className="mb-3">
