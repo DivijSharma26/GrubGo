@@ -1,6 +1,6 @@
 const express = require('express');
 // const mongo = require('./db');
-const mongoDb = require('./db');
+const mongoDb = require('./db.js');
 const app = express();
 const port = 5000
 mongoDb();
@@ -15,12 +15,9 @@ app.use((req,res,next)=>{
 })
 
 
-app.get('/',(req,res)=>{
-    res.send('HELLOoooo')
-})
-
 app.use(express.json())
 app.use('/api',require("./routes/CreatUser"));
+app.use('/api',require("./routes/DisplayData"));
 
 app.listen(port,() =>{
     console.log(`"ex" ${port}`);

@@ -4,13 +4,16 @@ const User = require('../models/User')
 const { body, validationResult } = require('express-validator');
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const jwtSecret = "Thisismyfirstprojectinmylife#$%"
+const jwtSecret = "Thisismyfirstprojectinmylife#$%";
+const cors = require('cors');
+
 
 router.post("/createuser", [
     body('email').isEmail(),
     body('name').isLength({ min: 5 }),
     body('password', 'Incorrect Password').isLength({ min: 5 })],
     async (req, res) => {
+        
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
@@ -37,19 +40,22 @@ router.post("/createuser", [
 
 
 
-router.post("/loginuser",
+router.post("/loginuser",[
+    body('email').isEmail(),
+    body('password', 'Incorrect Password').isLength({ min: 5 })
+],
     async (req, res) => {
 
         let email = req.body.email;
         try {
             let userData = await User.findOne({ email });
             if (!userData) {
-                return res.status(400).json({ errors: "Incorrect credentials" })
+                return res.status(400).json({ errors: "Incorrect credentials (email)" })
             }
             const pwdCompare = await bcrypt.compare(req.body.password,userData.password)
 
             if (!pwdCompare) {
-                return res.status(400).json({ errors: "Incorrect credentials" })
+                return res.status(400).json({ errors: "Incorrect credentials(pass" })
             }
 
             const data={
@@ -60,7 +66,7 @@ router.post("/loginuser",
 
             const authToken = jwt.sign(data,jwtSecret)
 
-            return res.json({ success: true,authToken })
+            return res.json({ success: true,authToken:authToken})
 
         } catch (error) {
             console.log(error);
