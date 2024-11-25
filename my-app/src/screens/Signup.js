@@ -19,6 +19,9 @@ export default function Signup() {
     if (!json.success) {
       alert("Enter Vaild Credentials")
     }
+    else{
+      window.location.href="http://localhost:3000/login"
+    }
 
   }
 
