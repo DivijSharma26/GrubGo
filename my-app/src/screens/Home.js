@@ -73,10 +73,9 @@ export default function Home() {
                                 .map((ele) => {
                                     return (
                                         <div key={ele._id} className="col-12 col-md-6 col-lg-3">
-                                            <Card foodName={ele.name}
+                                            <Card foodItem = {ele}  
                                                 options={ele.options[0]}
-                                                imgSrc={ele.img}
-                                                description={ele.description}
+                                                
                                             ></Card>
                                         </div>
                                     )

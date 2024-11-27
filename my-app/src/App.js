@@ -12,6 +12,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import Signup from './screens/Signup';
 function App() {
   return (
+    <CartProvider>
     <Router>
       <div>
         <Routes>
@@ -21,6 +22,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </CartProvider>
   );
 }
 
