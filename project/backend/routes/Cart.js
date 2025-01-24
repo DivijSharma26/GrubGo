@@ -29,4 +29,46 @@ router.post('/addtocart', [
     }
 });
 
-module.exports = router; 
+router.get('/getcart/:userId', async (req, res) => {
+    const { userId } = req.params;
+
+    try {
+        const cart = await Cart.findOne({ userId });
+        if (cart) {
+            res.json({ success: true, items: cart.items });
+        } else {
+            res.json({ success: false, error: 'Cart not found' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, error: 'Server Error' });
+    }
+});
+
+router.post('/removecartitem', [
+    body('userId').notEmpty(),
+    body('itemId').notEmpty()
+], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { userId, itemId } = req.body;
+
+    try {
+        const cart = await Cart.findOne({ userId });
+        if (cart) {
+            cart.items = cart.items.filter(item => item.id !== itemId);
+            await cart.save();
+            res.json({ success: true, items: cart.items });
+        } else {
+            res.json({ success: false, error: 'Cart not found' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, error: 'Server Error' });
+    }
+});
+
+module.exports = router;

@@ -13,12 +13,10 @@ router.post("/createuser", [
     body('name').isLength({ min: 5 }),
     body('password', 'Incorrect Password').isLength({ min: 5 })],
     async (req, res) => {
-        
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({ errors: errors.array()});
         }
-
         const salt = await bcrypt.genSalt(10);
         let secPassword = await bcrypt.hash(req.body.password, salt)
 
@@ -29,8 +27,7 @@ router.post("/createuser", [
                 email: req.body.email,
                 location: req.body.location
             })
-
-                .then(res.json({ success: true }));
+            .then(res.json({ success: true }));
 
         } catch (error) {
             console.log("hihihihi");
