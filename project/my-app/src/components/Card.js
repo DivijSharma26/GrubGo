@@ -31,7 +31,7 @@ export default function Card(props) {
         const decoded = jwtDecode(token); // Decode the token to get the user ID
         const userId = decoded.user.id;
 
-        const response = await fetch('http://localhost:5000/api/addtocart', {
+        const response = await fetch('https://grubgo-6v76.onrender.com/api/addtocart', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
