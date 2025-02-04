@@ -13,4 +13,7 @@ workflows:
   build_now:
     jobs:
       - build:
-          
+          filters:
+            branches:
+              only:
+                - index
