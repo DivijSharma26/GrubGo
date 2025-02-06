@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Signup() {
   const [credentials, setcredentials] = useState({ name: "", email: "", password: "", geolocation: "" })
-
+  let navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("https://grubgo-6v76.onrender.com/api/createuser", {
@@ -20,7 +20,7 @@ export default function Signup() {
       alert("Enter Vaild Credentials")
     }
     else{
-      window.location.href="http://localhost:3000/login"
+      navigate('/login');
     }
 
   }
